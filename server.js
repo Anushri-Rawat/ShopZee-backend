@@ -8,6 +8,7 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import { notFoundHandler, errorHandler } from "./middleware/errorMiddleware.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
